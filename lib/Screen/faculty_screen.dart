@@ -77,3 +77,45 @@ class _FacultyScreenState extends State<FacultyScreen> {
       }
     }
   }
+
+  deleteFacultyDetails() {
+    Alert(
+      style: const AlertStyle(
+          backgroundColor: Colors.white,
+          titleStyle:
+              TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
+      context: context,
+      type: AlertType.info,
+      title: "ALERT",
+      desc: "Do you want to delete?",
+      buttons: [
+        DialogButton(
+          onPressed: () => Navigator.pop(context),
+          color: const Color.fromRGBO(0, 0, 0, 0),
+          child: const Text(
+            "No",
+            style: TextStyle(
+                color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
+          ),
+        ),
+        DialogButton(
+          onPressed: () {
+            delete();
+          },
+          color: const Color.fromRGBO(0, 0, 0, 0),
+          child: const Text(
+            "Yes",
+            style: TextStyle(
+                color: Colors.red, fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        )
+      ],
+    ).show();
+  }
+
+  delete() async {
+    await deleteFaculty("/faculty/faculty", _faculty!);
+    Navigator.of(context).pop();
+    Navigator.of(context).pop();
+  }
+  
