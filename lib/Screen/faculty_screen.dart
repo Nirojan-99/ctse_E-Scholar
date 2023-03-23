@@ -118,7 +118,7 @@ class _FacultyScreenState extends State<FacultyScreen> {
     Navigator.of(context).pop();
     Navigator.of(context).pop();
   }
-  
+
   updateDetails() async {
     if (formKey.currentState!.validate()) {
       Faculty newFaculty = Faculty(
@@ -146,3 +146,207 @@ class _FacultyScreenState extends State<FacultyScreen> {
   }
 
   final formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+    AppBar appbar = AppBar(
+      title: const Text("Faculty"),
+    );
+    final double hight = MediaQuery.of(context).size.height -
+        appbar.preferredSize.height -
+        MediaQuery.of(context).padding.top;
+    final double width = MediaQuery.of(context).size.width;
+
+    return Scaffold(
+      appBar: appbar,
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        padding: const EdgeInsets.all(14),
+        child: SingleChildScrollView(
+          child: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                ELabel("Faculty Name"),
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "enter valid name";
+                    } else {
+                      return null;
+                    }
+                  },
+                  autocorrect: false,
+                  obscureText: false,
+                  keyboardType: TextInputType.emailAddress,
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontFamily: "open sans",
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16),
+                  controller: facultyNameController,
+                  cursorColor: Colors.white,
+                  maxLines: 1,
+                  decoration: InputDecoration(
+                      errorStyle: const TextStyle(
+                          color: Colors.red, fontWeight: FontWeight.w700),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 7, horizontal: 10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(7.0),
+                          borderSide: BorderSide.none),
+                      fillColor: const Color(0xff4b576f),
+                      filled: true),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ELabel("Code Number"),
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "enter valid code";
+                    } else {
+                      return null;
+                    }
+                  },
+                  autocorrect: false,
+                  obscureText: false,
+                  keyboardType: TextInputType.emailAddress,
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontFamily: "open sans",
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16),
+                  controller: codeNumberController,
+                  cursorColor: Colors.white,
+                  maxLines: 1,
+                  decoration: InputDecoration(
+                      errorStyle: const TextStyle(
+                          color: Colors.red, fontWeight: FontWeight.w700),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 7, horizontal: 10),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(7.0),
+                          borderSide: BorderSide.none),
+                      fillColor: const Color(0xff4b576f),
+                      filled: true),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ELabel("HOD"),
+                SizedBox(
+                  width: double.infinity,
+                  // padding: EdgeInsets.all(14),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton2(
+                      isExpanded: true,
+                      hint: const Text(
+                        'Select',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      items: HODs != null
+                          ? HODs!
+                              .map((item) => DropdownMenuItem<String>(
+                                    value: item.firstName,
+                                    child: Text(
+                                      item.firstName,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ))
+                              .toList()
+                          : null,
+                      value: HOD,
+                      onChanged: (value) {
+                        setState(() {
+                          HOD = value as String;
+                        });
+                      },
+                      buttonStyleData: ButtonStyleData(
+                        height: 50,
+                        width: 160,
+                        padding: const EdgeInsets.only(left: 14, right: 14),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7),
+                          color: const Color(0xff4A576F),
+                        ),
+                        elevation: 2,
+                      ),
+                      iconStyleData: const IconStyleData(
+                        icon: Icon(
+                          Icons.arrow_drop_down,
+                          size: 30,
+                          color: Colors.white,
+                        ),
+                        iconSize: 14,
+                        iconDisabledColor: Colors.grey,
+                      ),
+                      dropdownStyleData: DropdownStyleData(
+                          maxHeight: 200,
+                          width: width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(14),
+                            color: const Color(0xff4A576F),
+                          ),
+                          elevation: 8,
+                          offset: const Offset(-20, 0),
+                          scrollbarTheme: ScrollbarThemeData(
+                            radius: const Radius.circular(40),
+                            thickness: MaterialStateProperty.all(6),
+                            thumbVisibility: MaterialStateProperty.all(true),
+                          )),
+                      menuItemStyleData: const MenuItemStyleData(
+                        height: 40,
+                        padding: EdgeInsets.only(left: 14, right: 14),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                EButton(_faculty != null ? "Update" : "Add", () {
+                  _faculty != null ? updateDetails() : addFacultyData();
+                }),
+                const SizedBox(
+                  height: 10,
+                ),
+                _faculty != null
+                    ? Row(
+                        children: [
+                          Expanded(child: Container()),
+                          TextButton(
+                              onPressed: () {
+                                deleteFacultyDetails();
+                              },
+                              child: const Text(
+                                "Delete",
+                                style: TextStyle(color: Colors.red),
+                              ))
+                        ],
+                      )
+                    : Container(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
