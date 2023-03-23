@@ -119,3 +119,30 @@ class _FacultyScreenState extends State<FacultyScreen> {
     Navigator.of(context).pop();
   }
   
+  updateDetails() async {
+    if (formKey.currentState!.validate()) {
+      Faculty newFaculty = Faculty(
+          facultyName: facultyNameController.text,
+          codeNumber: codeNumberController.text,
+          HOD: HOD!,
+          id: _faculty!.id);
+
+      bool res = await updateFaculty("/faculty/faculty", newFaculty);
+      if (res) {
+        Navigator.of(context).pop();
+      } else {
+        // ignore: use_build_context_synchronously
+        MotionToast.error(
+          description: const Text(
+            "Unable to update!",
+            style: TextStyle(
+                color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          toastDuration: const Duration(milliseconds: 1000),
+          animationDuration: const Duration(milliseconds: 400),
+        ).show(context);
+      }
+    }
+  }
+
+  final formKey = GlobalKey<FormState>();
