@@ -78,23 +78,4 @@ Future<List<Module>> getModules(path) async {
   }
 }
 
-Future<List<Module>> getModuleByName(path, String name) async {
-  var response = await http.get(
-    Uri.parse('$_URI$path?name=$name'),
-    headers: {
-      HttpHeaders.contentTypeHeader: 'application/json',
-    },
-  );
-  List<Module> modules = <Module>[];
-  if (response.statusCode == 200) {
-    var data = json.decode(response.body);
 
-    for (var item in data) {
-      modules.add(Module.fromMap(item));
-    }
-
-    return modules;
-  } else {
-    return modules;
-  }
-}
