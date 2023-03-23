@@ -60,3 +60,20 @@ Future<Faculty?> getFaculty(path, id) async {
     return null;
   }
 }
+
+Future<List<Faculty>> getFaculties(path) async {
+  var response = await http.get(Uri.parse('$_URI$path'));
+
+  List<Faculty> faculties = <Faculty>[];
+  if (response.statusCode == 200) {
+    var data = json.decode(response.body);
+
+    for (var item in data) {
+      faculties.add(Faculty.fromMap(item));
+    }
+
+    return faculties;
+  } else {
+    return faculties;
+  }
+}
