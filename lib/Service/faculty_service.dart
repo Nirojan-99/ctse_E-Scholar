@@ -24,3 +24,18 @@ Future<bool> addFaculty(path, Faculty faculty) async {
     return false;
   }
 }
+
+Future<bool> updateFaculty(path, Faculty faculty) async {
+  var response = await http.put(
+    Uri.parse('$_URI$path'),
+    body: faculty.toJson(),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  );
+  if (response.statusCode == 200) {
+    return true;
+  } else {
+    return false;
+  }
+}
