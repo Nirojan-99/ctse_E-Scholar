@@ -77,3 +77,24 @@ Future<List<Faculty>> getFaculties(path) async {
     return faculties;
   }
 }
+
+Future<List<Faculty>> getFacultiesByName(path, String name) async {
+  var response = await http.get(
+    Uri.parse('$_URI$path?name=$name'),
+    headers: {
+      HttpHeaders.contentTypeHeader: 'application/json',
+    },
+  );
+  List<Faculty> faculties = <Faculty>[];
+  if (response.statusCode == 200) {
+    var data = json.decode(response.body);
+
+    for (var item in data) {
+      faculties.add(Faculty.fromMap(item));
+    }
+
+    return faculties;
+  } else {
+    return faculties;
+  }
+}
