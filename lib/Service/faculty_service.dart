@@ -48,3 +48,15 @@ Future<bool> deleteFaculty(path, Faculty faculty) async {
     return false;
   }
 }
+
+Future<Faculty?> getFaculty(path, id) async {
+  final uri = Uri.https(_URI!, path, {"_id": id});
+
+  var response = await http.get(uri);
+  if (response.statusCode == 200) {
+    Faculty res = Faculty.fromJson(response.body);
+    return res;
+  } else {
+    return null;
+  }
+}
