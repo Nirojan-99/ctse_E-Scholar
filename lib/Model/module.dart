@@ -86,14 +86,5 @@ class Module {
         other.id == id;
   }
 
-  @override
-  int get hashCode {
-    return moduleName.hashCode ^
-        moduleCode.hashCode ^
-        LIC.hashCode ^
-        enrolmentKey.hashCode ^
-        duration.hashCode ^
-        courseId.hashCode ^
-        id.hashCode;
-  }
+
 }
