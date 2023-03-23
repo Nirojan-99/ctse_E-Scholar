@@ -39,3 +39,12 @@ Future<bool> updateFaculty(path, Faculty faculty) async {
     return false;
   }
 }
+
+Future<bool> deleteFaculty(path, Faculty faculty) async {
+  var response = await http.delete(Uri.parse('$_URI$path?_id=${faculty.id}'));
+  if (response.statusCode == 200) {
+    return true;
+  } else {
+    return false;
+  }
+}
