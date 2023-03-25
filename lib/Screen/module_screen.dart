@@ -125,43 +125,7 @@ class _ModuleScreenState extends State<ModuleScreen> {
     Navigator.of(context).pop();
   }
 
-  updateDetails() async {
-    if (formKey.currentState!.validate()) {
-      Module module = Module(
-          moduleName: moduleNameController.text,
-          moduleCode: moduleCodeController.text,
-          LIC: LIC!,
-          enrolmentKey: enrolmentController.text,
-          duration: int.parse(durationController.text),
-          courseId: course!,
-          id: _module!.id);
-
-      bool res = await updateModule("/module/module", module);
-      if (res) {
-        Navigator.of(context).pop();
-      } else {
-        // ignore: use_build_context_synchronously
-        MotionToast.error(
-          description: const Text(
-            "Unable to update!",
-            style: TextStyle(
-                color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          toastDuration: const Duration(milliseconds: 1000),
-          animationDuration: const Duration(milliseconds: 400),
-        ).show(context);
-      }
-    }
-  }
-
-  final formKey = GlobalKey<FormState>();
-
-  getFacultyLIC() async {
-    List<Staff> data = await getStaffs("/staff/HOD");
-    setState(() {
-      LICs = data;
-    });
-  }
+ 
 
   getAllFaculties() async {
     List<Degree> data = await getDegrees("/course/courses");
