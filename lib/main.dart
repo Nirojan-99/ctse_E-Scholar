@@ -26,6 +26,13 @@ class MyApp extends StatelessWidget {
         "/single degree": (context) => const DegreeScreen(),
         "/faculties": (context) => const FacultyDetails(),
         "/degree program": (context) => const DegreeDetails(),
+        "/staff": (context) => const StaffDetails(),
+        "/single staff": (context) => const StaffScreen(),
+        "/login": (context) => const LoginScreen(),
+        "/register": (context) => const RegisterScreen(),
+        "/forgot password": (context) => const ForgotPasswordScreen(),
+        "/otp": (context) => const OTPScreen(),
+        "/reset password": (context) => const ResetPassword(),
       },
     );
   }
