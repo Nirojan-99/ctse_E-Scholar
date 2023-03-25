@@ -17,6 +17,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   String emailErrorText = '';
   double errorBoxHight = 0;
 
+  //handler function
   submitHandler() async {
     setState(() {
       errorBoxHight = 0;

@@ -10,11 +10,14 @@ class StaffDetails extends StatefulWidget {
 }
 
 class _StaffDetailsState extends State<StaffDetails> {
+  //state
   List<Staff>? staffs;
   final searchTextController = TextEditingController();
 
+  //function to get all staff
   var functionName = getStaffs("/staff/staffs");
 
+  //search handler
   onClickSearch() {
     setState(() {
       functionName =
