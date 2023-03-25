@@ -60,6 +60,30 @@ class _ModuleScreenState extends State<ModuleScreen> {
     super.initState();
   }
 
+  addModuleData() async {
+    if (formKey.currentState!.validate()) {
+      Module module = Module(
+          moduleName: moduleNameController.text,
+          moduleCode: moduleCodeController.text,
+          LIC: LIC!,
+          enrolmentKey: enrolmentController.text,
+          duration: int.parse(durationController.text),
+          courseId: course!);
+      bool res = await addModule("/module/module", module);
+      if (res) {
+        Navigator.of(context).pop();
+      } else {
+        // ignore: use_build_context_synchronously
+        AnimatedSnackBar.material(
+          'Unable to add data',
+          type: AnimatedSnackBarType.error,
+          mobileSnackBarPosition: MobileSnackBarPosition.bottom,
+          duration: const Duration(milliseconds: 600),
+        ).show(context);
+      }
+    }
+  }
+
   deleteModuleDetails() {
     Alert(
       style: const AlertStyle(
