@@ -18,6 +18,19 @@ class _MoreInfoState extends State<MoreInfo> {
     super.dispose();
   }
 
+  var list = [
+    {
+      "head":
+          "All the students with their student ID numbers will be listed in the student management dashboard.",
+      "items": [
+        "By clicking the plus icon in the right-side top corner, admin can add the student.",
+        "Using the search bar admin can search the student's name with their student number.",
+        "	Admin can edit and update the student details.",
+        "Admin can remove/ delete the existing student details, if necessary."
+      ]
+    }
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
