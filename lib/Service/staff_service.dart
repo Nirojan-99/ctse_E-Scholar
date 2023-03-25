@@ -4,8 +4,10 @@ import 'package:ctse_app/Util/env.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+//URI
 final String? _URI = URI;
 
+//add new staff
 Future<bool> addStaff(path, Staff staff) async {
   var response = await http.post(
     Uri.parse('$_URI$path'),
@@ -21,6 +23,7 @@ Future<bool> addStaff(path, Staff staff) async {
   }
 }
 
+//update staff details
 Future<bool> updateStaff(path, Staff staff) async {
   var response = await http.put(
     Uri.parse('$_URI$path'),
@@ -37,6 +40,7 @@ Future<bool> updateStaff(path, Staff staff) async {
   }
 }
 
+//delete staff
 Future<bool> deleteStaff(path, Staff staff) async {
   var response = await http.delete(Uri.parse("$_URI$path?_id=${staff.id}"));
   if (response.statusCode == 200) {
@@ -46,6 +50,7 @@ Future<bool> deleteStaff(path, Staff staff) async {
   }
 }
 
+//get staff by id
 Future<Staff?> getStaff(path, id) async {
   final uri = Uri.https(_URI!, path, {"_id": id});
 
@@ -58,6 +63,7 @@ Future<Staff?> getStaff(path, id) async {
   }
 }
 
+//get all staff
 Future<List<Staff>> getStaffs(path) async {
   var response = await http.get(Uri.parse('$_URI$path'));
 
@@ -75,7 +81,7 @@ Future<List<Staff>> getStaffs(path) async {
   }
 }
 
-
+//get staff by name
 Future<List<Staff>> getStaffsByName(path, String name) async {
   var response = await http.get(
     Uri.parse('$_URI$path?name=$name'),
