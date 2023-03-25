@@ -1,49 +1,53 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class Staff {
+class Student {
   final String firstName;
   final String lastName;
   final String email;
   final int contactNumber;
-  final String division;
-  final String? faculty;
-  final String? role;
-  final String? sector;
+  final String idNumber;
+  final String facultyId;
+  final String degreeId;
+  final String role;
   final String? id;
-  Staff({
+  final int academicYear;
+  Student({
     required this.firstName,
     required this.lastName,
     required this.email,
     required this.contactNumber,
-    required this.division,
-    this.faculty,
-    this.role,
-    this.sector,
+    required this.idNumber,
+    required this.facultyId,
+    required this.degreeId,
+    required this.role,
     this.id,
+    required this.academicYear,
   });
 
-  Staff copyWith({
+  Student copyWith({
     String? firstName,
     String? lastName,
     String? email,
     int? contactNumber,
-    String? division,
-    String? faculty,
+    String? idNumber,
+    String? facultyId,
+    String? degreeId,
     String? role,
-    String? sector,
     String? id,
+    int? academicYear,
   }) {
-    return Staff(
+    return Student(
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
       email: email ?? this.email,
       contactNumber: contactNumber ?? this.contactNumber,
-      division: division ?? this.division,
-      faculty: faculty ?? this.faculty,
+      idNumber: idNumber ?? this.idNumber,
+      facultyId: facultyId ?? this.facultyId,
+      degreeId: degreeId ?? this.degreeId,
       role: role ?? this.role,
-      sector: sector ?? this.sector,
       id: id ?? this.id,
+      academicYear: academicYear ?? this.academicYear,
     );
   }
 
@@ -53,39 +57,41 @@ class Staff {
       'lastName': lastName,
       'email': email,
       'contactNumber': contactNumber,
-      'division': division,
-      'faculty': faculty,
+      'idNumber': idNumber,
+      'facultyId': facultyId,
+      'degreeId': degreeId,
       'role': role,
-      'sector': sector,
       '_id': id,
+      'academicYear': academicYear,
     };
   }
 
-  factory Staff.fromMap(Map<String, dynamic> map) {
-    return Staff(
+  factory Student.fromMap(Map<String, dynamic> map) {
+    return Student(
       firstName: map['firstName'] as String,
       lastName: map['lastName'] as String,
       email: map['email'] as String,
       contactNumber: map['contactNumber'] as int,
-      division: map['division'] as String,
-      faculty: map['faculty'] != null ? map['faculty'] as String : null,
-      role: map['role'] != null ? map['role'] as String : null,
-      sector: map['sector'] != null ? map['sector'] as String : null,
+      idNumber: map['idNumber'] as String,
+      facultyId: map['facultyId'] as String,
+      degreeId: map['degreeId'] as String,
+      role: map['role'] as String,
       id: map['_id'] != null ? map['_id'] as String : null,
+      academicYear: map['academicYear'] as int,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory Staff.fromJson(String source) => Staff.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Student.fromJson(String source) => Student.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'Staff(firstName: $firstName, lastName: $lastName, email: $email, contactNumber: $contactNumber, division: $division, faculty: $faculty, role: $role, sector: $sector, id: $id)';
+    return 'Student(firstName: $firstName, lastName: $lastName, email: $email, contactNumber: $contactNumber, idNumber: $idNumber, facultyId: $facultyId, degreeId: $degreeId, role: $role, id: $id, academicYear: $academicYear)';
   }
 
   @override
-  bool operator ==(covariant Staff other) {
+  bool operator ==(covariant Student other) {
     if (identical(this, other)) return true;
   
     return 
@@ -93,11 +99,12 @@ class Staff {
       other.lastName == lastName &&
       other.email == email &&
       other.contactNumber == contactNumber &&
-      other.division == division &&
-      other.faculty == faculty &&
+      other.idNumber == idNumber &&
+      other.facultyId == facultyId &&
+      other.degreeId == degreeId &&
       other.role == role &&
-      other.sector == sector &&
-      other.id == id;
+      other.id == id &&
+      other.academicYear == academicYear;
   }
 
   @override
@@ -106,11 +113,13 @@ class Staff {
       lastName.hashCode ^
       email.hashCode ^
       contactNumber.hashCode ^
-      division.hashCode ^
-      faculty.hashCode ^
+      idNumber.hashCode ^
+      facultyId.hashCode ^
+      degreeId.hashCode ^
       role.hashCode ^
-      sector.hashCode ^
-      id.hashCode;
+      id.hashCode ^
+      academicYear.hashCode;
   }
 }
+
 
