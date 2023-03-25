@@ -51,17 +51,17 @@ class Module {
     };
   }
 
-  // factory Module.fromMap(Map<String, dynamic> map) {
-  //   return Module(
-  //     moduleName: map['moduleName'] as String,
-  //     moduleCode: map['moduleCode'] as String,
-  //     LIC: map['LIC'] as String,
-  //     enrolmentKey: map['enrolmentKey'] as String,
-  //     duration: map['duration'] as int,
-  //     courseId: map['courseId'] as String,
-  //     id: map['_id'] != null ? map['_id'] as String : null,
-  //   );
-  // }
+  factory Module.fromMap(Map<String, dynamic> map) {
+    return Module(
+      moduleName: map['moduleName'] as String,
+      moduleCode: map['moduleCode'] as String,
+      LIC: map['LIC'] as String,
+      enrolmentKey: map['enrolmentKey'] as String,
+      duration: map['duration'] as int,
+      courseId: map['courseId'] as String,
+      id: map['_id'] != null ? map['_id'] as String : null,
+    );
+  }
 
   String toJson() => json.encode(toMap());
 
