@@ -1,8 +1,8 @@
-import 'package:ctse_app/Components/e_button.dart';
-import 'package:ctse_app/Components/e_error_message.dart';
-import 'package:ctse_app/Components/e_label.dart';
-import 'package:ctse_app/Model/user.dart';
-import 'package:ctse_app/Service/user_service.dart';
+import 'package:e_scholar/Components/e_button.dart';
+import 'package:e_scholar/Components/e_error_message.dart';
+import 'package:e_scholar/Components/e_label.dart';
+import 'package:e_scholar/Model/user.dart';
+import 'package:e_scholar/Service/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

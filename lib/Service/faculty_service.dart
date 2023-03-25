@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:ctse_app/Model/faculty.dart';
-import 'package:ctse_app/Util/env.dart';
+import 'package:e_scholar/Model/faculty.dart';
+import 'package:e_scholar/Util/env.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 

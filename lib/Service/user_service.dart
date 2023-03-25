@@ -1,5 +1,5 @@
-import 'package:ctse_app/Model/user.dart';
-import 'package:ctse_app/Util/env.dart';
+import 'package:e_scholar/Model/user.dart';
+import 'package:e_scholar/Util/env.dart';
 import 'package:http/http.dart' as http;
 
 final String? _URI = URI;

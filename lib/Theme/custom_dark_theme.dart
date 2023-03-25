@@ -1,4 +1,4 @@
-import 'package:ctse_app/Theme/material_color.dart';
+import 'package:e_scholar/Theme/material_color.dart';
 import 'package:flutter/material.dart';
 
 ThemeData customDarkTheme() {

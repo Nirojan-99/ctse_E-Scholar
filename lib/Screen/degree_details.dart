@@ -1,5 +1,5 @@
-import 'package:ctse_app/Model/degree.dart';
-import 'package:ctse_app/Service/degree_service.dart';
+import 'package:e_scholar/Model/degree.dart';
+import 'package:e_scholar/Service/degree_service.dart';
 import 'package:flutter/material.dart';
 
 class DegreeDetails extends StatefulWidget {
