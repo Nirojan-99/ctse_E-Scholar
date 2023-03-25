@@ -1,5 +1,5 @@
-import 'package:ctse_app/Model/module.dart';
-import 'package:ctse_app/Service/module_service.dart';
+import 'package:e_scholar/Model/module.dart';
+import 'package:e_scholar/Service/module_service.dart';
 import 'package:flutter/material.dart';
 
 class ModuleDetails extends StatefulWidget {

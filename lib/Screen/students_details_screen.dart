@@ -1,5 +1,5 @@
-import 'package:ctse_app/Model/student.dart';
-import 'package:ctse_app/Service/student_service.dart';
+import 'package:e_scholar/Model/student.dart';
+import 'package:e_scholar/Service/student_service.dart';
 import 'package:flutter/material.dart';
 
 class StudentsList extends StatefulWidget {

@@ -1,5 +1,5 @@
-import 'package:ctse_app/Model/faculty.dart';
-import 'package:ctse_app/Service/faculty_service.dart';
+import 'package:e_scholar/Model/faculty.dart';
+import 'package:e_scholar/Service/faculty_service.dart';
 import 'package:flutter/material.dart';
 
 class FacultyDetails extends StatefulWidget {

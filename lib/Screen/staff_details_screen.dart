@@ -1,5 +1,5 @@
-import 'package:ctse_app/Model/staff.dart';
-import 'package:ctse_app/Service/staff_service.dart';
+import 'package:e_scholar/Model/staff.dart';
+import 'package:e_scholar/Service/staff_service.dart';
 import 'package:flutter/material.dart';
 
 class StaffDetails extends StatefulWidget {

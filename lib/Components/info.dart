@@ -1,4 +1,4 @@
-import 'package:ctse_app/Components/e_button.dart';
+import 'package:e_scholar/Components/e_button.dart';
 import 'package:flutter/material.dart';
 
 class Info extends StatelessWidget {
