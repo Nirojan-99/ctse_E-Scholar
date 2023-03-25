@@ -15,12 +15,12 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 
 final items = ["one", "two", "three", "four", "five"];
 
-// class ModuleScreen extends StatefulWidget {
-//   const ModuleScreen({super.key});
+class ModuleScreen extends StatefulWidget {
+  const ModuleScreen({super.key});
 
-//   @override
-//   State<ModuleScreen> createState() => _ModuleScreenState();
-// }
+  @override
+  State<ModuleScreen> createState() => _ModuleScreenState();
+}
 
 class _ModuleScreenState extends State<ModuleScreen> {
   List<Staff>? LICs;
